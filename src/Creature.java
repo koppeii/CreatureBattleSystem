@@ -2,14 +2,17 @@ public class Creature {
     public String name;
     public String action;
 
-    public float health = 1000;
-    private float[] dmgRange = {50, 100};
+    protected float health = 1000;
+    protected float[] dmgRange = {50, 100};
 
-    private int missChance = 10;
-    private int blockChance = 20;
-    private int dodgeChance = 50;
+    protected int missChance = 10;
+    protected int blockChance = 20;
+    protected int dodgeChance = 50;
 
-    private float blockMultiplyer = 0.5f;
+    protected float blockMultiplier = 0.5f;
+
+    // protected is a way to allow subclasses to influence superclass fields
+
 
     // Returns the damage done by the Creature
     public float genAttackPower() {
@@ -34,7 +37,7 @@ public class Creature {
 
         // 20% chance of reducing 50% damage taken
         if (Rand.randomInt(0, 100) < blockChance) {
-            incomingPower *= blockMultiplyer;
+            incomingPower *= blockMultiplier;
             action = name + " defended and reduced damage taken to " + incomingPower;
         }
         else
@@ -52,7 +55,7 @@ public class Creature {
         }
     }
 
-    public void takeDamage(float damage) {
+    private void takeDamage(float damage) {
         health -= damage;
     }
 

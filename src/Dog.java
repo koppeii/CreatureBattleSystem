@@ -1,17 +1,18 @@
 public class Dog extends Creature {
+    Dog() {
+        // a way to allow subclasses to influence superclass fields
 
-    public float[] dmgRange = {50, 100};
+        this.health = 700;
+        this.dmgRange = new float[]{500, 600};
+            // why am i not allowed to initialize an array here? why do i have to do it like this (recommended by the ide)
 
-    @Override
-    public float genAttackPower() {
+        this.missChance = 20;
+        this.blockChance = 10;
+        this.dodgeChance = 60;
 
-        // 10% chance of missing
-        if (Rand.randomInt(0, 10) < 1) {
-            return 0;
-        }
+        this. blockMultiplier = 0.4f;
 
-        // otherwise, do damage between 10-20
-        float power = Rand.randomFloat(dmgRange[0], dmgRange[1]);
-        return power;
+
+
     }
 }
