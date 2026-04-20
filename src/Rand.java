@@ -47,4 +47,21 @@ public class Rand
 
         return rand.nextFloat(maxExclusive - minInclusive) + minInclusive;
     }
+
+    public static int weightedInt(float[] weights) {
+        float summedWeights = 0;
+        for (float weight : weights)
+            summedWeights += weight;
+
+        float randomValue = summedWeights * randomFloat(0, 1);
+        float cumulativeWeight = 0;
+
+        for (int i = 0; i < weights.length; i++) {
+            cumulativeWeight += weights[i];
+
+            if (randomValue < cumulativeWeight)
+                return i;
+        }
+        return 0;
+    }
 }

@@ -4,10 +4,7 @@ public class BattleSystem {
             float attackPower = a.genAttackPower();
             a.attack(attackPower);
 
-            if (Rand.randomInt(0,2) == 1)
-                b.defend(attackPower);
-            else
-                b.dodge(attackPower);
+            b.secondaryAction(attackPower);
 
 
             System.out.println(a.readAction());

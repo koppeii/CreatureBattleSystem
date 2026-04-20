@@ -3,7 +3,9 @@ public class Creature {
     public String action;
 
     protected float health = 1000;
+
     protected float[] dmgRange = {50, 100};
+    protected float[] secondaryActionChances = {50, 50};
 
     protected int missChance = 10;
     protected int blockChance = 20;
@@ -31,6 +33,17 @@ public class Creature {
         }
 
         action = name + " attacked with power " + power + "!";
+    }
+
+    public void secondaryAction(float incomingPower) {
+        int action = Rand.weightedInt(secondaryActionChances);
+
+        switch (action) {
+            case 0:
+            defend(incomingPower);
+            case 1:
+            dodge(incomingPower);
+        }
     }
 
     public void defend(float incomingPower) {
