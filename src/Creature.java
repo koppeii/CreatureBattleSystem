@@ -5,6 +5,7 @@ public class Creature {
     protected float health = 1000;
 
     protected float[] dmgRange = {50, 100};
+    protected float[] primaryActionWeights = {100};
     protected float[] secondaryActionWeights = {40, 40, 20};
 
     protected int missChance = 10;
@@ -26,7 +27,20 @@ public class Creature {
         return power;
     }
 
-    public void attack(float power) {
+
+
+    public void primaryAction(float power) {
+        int action = Rand.weightedInt(primaryActionWeights);
+
+        switch (action) {
+            case 0: {
+                attack(power);
+                break;
+            }
+        }
+    }
+
+    private void attack(float power) {
         if (power <= 0) {
             action = name + " missed!";
             return;

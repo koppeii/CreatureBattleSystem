@@ -2,7 +2,7 @@ public class BattleSystem {
     public void battle(Creature a, Creature b) {
         while (a.health > 0 && b.health > 0) {
             float attackPower = a.genAttackPower();
-            a.attack(attackPower);
+            a.primaryAction(attackPower);
 
             b.secondaryAction(attackPower);
 

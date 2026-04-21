@@ -15,4 +15,16 @@ public class Dog extends Creature {
 
         this.blockMultiplier = 0.6f;
     }
+
+    @Override
+    public void primaryAction(float power) {
+        int action = Rand.weightedInt(primaryActionWeights);
+
+        switch (action) {
+            case 0: {
+//                attack(power);
+//                break;
+            }
+        }
+    }
 }
