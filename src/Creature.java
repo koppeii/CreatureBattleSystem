@@ -5,54 +5,51 @@ public class Creature {
     protected float health = 1000;
 
     protected float[] dmgRange = {50, 100};
-    protected float[] primaryActionWeights = {100};
+    protected float[] primaryActionWeights = {90, 10};
     protected float[] secondaryActionWeights = {40, 40, 20};
 
-    protected int missChance = 10;
     protected int blockChance = 50;
     protected int dodgeChance = 50;
 
     protected float blockMultiplier = 0.5f;
 
-    // protected is a way to allow subclasses to influence superclass fields
+    // protected is a way to allow subclasses to influence superclass fields/methods
 
 
     // Returns the damage done by the Creature
     public float genAttackPower() {
-        if (Rand.randomInt(0, 100) < missChance) {
-            return 0;
-        }
-
         float power = Rand.randomFloat(dmgRange[0], dmgRange[1]);
         return power;
     }
 
+    public float primaryAction(float power) {
+        int actionInt = Rand.weightedInt(primaryActionWeights);
 
-
-    public void primaryAction(float power) {
-        int action = Rand.weightedInt(primaryActionWeights);
-
-        switch (action) {
+        switch (actionInt) {
             case 0: {
-                attack(power);
-                break;
+                return attack(power);
             }
+            case 1: {
+                return 0;
+            }
+
         }
+
+        return 0;
     }
 
-    private void attack(float power) {
-        if (power <= 0) {
-            action = name + " missed!";
-            return;
-        }
-
+    private float attack(float power) {
         action = name + " attacked with power " + power + "!";
+        return power * 1;
     }
 
-    public void secondaryAction(float incomingPower) {
-        int action = Rand.weightedInt(secondaryActionWeights);
+    public void secondaryAction(float incomingPower, Creature attacker) {
+        int actionInt = Rand.weightedInt(secondaryActionWeights);
 
-        switch (action) {
+        if (incomingPower <= 0)
+            attacker.action = attacker.name + " missed!";
+
+        switch (actionInt) {
             case 0: {
                 defend(incomingPower);
                 break;
@@ -73,10 +70,10 @@ public class Creature {
         // 20% chance of reducing 50% damage taken
         if (Rand.randomInt(0, 100) < blockChance) {
             incomingPower *= blockMultiplier;
-            action = name + " defended and reduced damage taken to " + incomingPower;
+            action = name + " defended and reduced damage taken to " + incomingPower + "!";
         }
         else
-            action = name + " did not defend.";
+            action = name + " failed to defend!";
 
         takeDamage(incomingPower);
     }

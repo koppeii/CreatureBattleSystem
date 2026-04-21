@@ -6,10 +6,10 @@ public class Dog extends Creature {
 
         this.dmgRange = new float[]{50, 100};
             // why am i not allowed to initialize an array here? why like this (recommended by the ide), unlike in Creature?
+        this.primaryActionWeights = new float[]{35, 55, 10};
         this.secondaryActionWeights = new float[]{45, 45, 10};
             // defend, dodge, nothing
 
-        this.missChance = 20;
         this.blockChance = 50;
         this.dodgeChance = 60;
 
@@ -17,14 +17,35 @@ public class Dog extends Creature {
     }
 
     @Override
-    public void primaryAction(float power) {
-        int action = Rand.weightedInt(primaryActionWeights);
+    public float primaryAction(float power) {
+        int actionInt = Rand.weightedInt(primaryActionWeights);
 
-        switch (action) {
+        switch (actionInt) {
             case 0: {
-//                attack(power);
-//                break;
+                return bite(power);
+            }
+            case 1: {
+                return claw(power);
+            }
+            case 2: {
+                return 0;
             }
         }
+
+        return 0;
+    }
+
+    private float bite(float power) {
+        float newPower = power * 0.8f;
+        this.action = this.name + " bites for " + newPower + "!";
+
+        return newPower;
+    }
+
+    private float claw(float power) {
+        float newPower = power * 0.5f;
+        this.action = this.name + " claws for " + newPower + "!";
+
+        return newPower;
     }
 }
