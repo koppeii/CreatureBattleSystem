@@ -14,6 +14,15 @@ public class BattleSystem {
             System.out.println(b);
             System.out.println();
 
+            if (a.health <= 0) {
+                System.out.println(b.name + " has won!");
+                return;
+            }
+            else if (b.health <= 0) {
+                System.out.println(a.name + " has won!");
+                return;
+            }
+
             // swap turns
             Creature temp = a;
             a = b;

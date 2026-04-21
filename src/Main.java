@@ -4,8 +4,8 @@ public class Main {
         // set up the creatures
         Creature a = new Rabbit();
         Creature b = new Dog();
-        a.name = "A";
-        b.name = "B";
+        a.name = "Rabbit";
+        b.name = "Dog";
 
         // set up the battle
         BattleSystem battleSystem = new BattleSystem();

@@ -5,10 +5,10 @@ public class Creature {
     protected float health = 1000;
 
     protected float[] dmgRange = {50, 100};
-    protected float[] secondaryActionChances = {50, 50};
+    protected float[] secondaryActionWeights = {40, 40, 20};
 
     protected int missChance = 10;
-    protected int blockChance = 20;
+    protected int blockChance = 50;
     protected int dodgeChance = 50;
 
     protected float blockMultiplier = 0.5f;
@@ -36,17 +36,25 @@ public class Creature {
     }
 
     public void secondaryAction(float incomingPower) {
-        int action = Rand.weightedInt(secondaryActionChances);
+        int action = Rand.weightedInt(secondaryActionWeights);
 
         switch (action) {
-            case 0:
-            defend(incomingPower);
-            case 1:
-            dodge(incomingPower);
+            case 0: {
+                defend(incomingPower);
+                break;
+            }
+            case 1: {
+                dodge(incomingPower);
+                break;
+            }
+            case 2: {
+                doNothing(incomingPower);
+                break;
+            }
         }
     }
 
-    public void defend(float incomingPower) {
+    private void defend(float incomingPower) {
 
         // 20% chance of reducing 50% damage taken
         if (Rand.randomInt(0, 100) < blockChance) {
@@ -59,7 +67,7 @@ public class Creature {
         takeDamage(incomingPower);
     }
 
-    public void dodge(float incomingPower) {
+    private void dodge(float incomingPower) {
         if (Rand.randomInt(0, 100) < dodgeChance)
             action = name + " dodged!";
         else {
@@ -68,8 +76,17 @@ public class Creature {
         }
     }
 
+    private void doNothing(float incomingPower) {
+        action = name + " stays still...";
+
+        takeDamage(incomingPower);
+    }
+
     private void takeDamage(float damage) {
         health -= damage;
+
+        if (health <= 0)
+            health = 0;
     }
 
     public String readAction() {

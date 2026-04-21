@@ -1,2 +1,2 @@
-public class Werewolf {
+public class Werewolf extends Creature {
 }
