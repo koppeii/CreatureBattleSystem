@@ -46,8 +46,12 @@ public class Creature {
     public void secondaryAction(float incomingPower, Creature attacker) {
         int actionInt = Rand.weightedInt(secondaryActionWeights);
 
-        if (incomingPower <= 0)
+        if (incomingPower == 0)
             attacker.action = attacker.name + " missed!";
+        else if (incomingPower < 0) {
+            attacker.health = attacker.health + (-incomingPower);
+            incomingPower = 0;
+        }
 
         switch (actionInt) {
             case 0: {

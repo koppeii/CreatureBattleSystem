@@ -64,4 +64,19 @@ public class Rand
         }
         return 0;
     }
+
+    public static Creature randomCreature() {
+        int randInt = randomInt(1, 4);
+
+        switch (randInt) {
+            case 1:
+                return new Dog();
+            case 2:
+                return new Rabbit();
+            case 3:
+                return new Werewolf();
+        }
+
+        return null;
+    }
 }

@@ -2,10 +2,12 @@ public class Main {
     public static void main(String[] args) {
 
         // set up the creatures
-        Creature a = new Rabbit();
-        Creature b = new Dog();
-        a.name = "Rabbit";
-        b.name = "Dog";
+
+
+        Creature a = Rand.randomCreature();
+        Creature b = Rand.randomCreature();
+        a.name = "Grimm";
+        b.name = "Lewis";
 
         // set up the battle
         BattleSystem battleSystem = new BattleSystem();

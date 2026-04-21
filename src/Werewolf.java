@@ -2,13 +2,13 @@ public class Werewolf extends Creature {
     Werewolf() {
         this.health = 800;
 
-        this.dmgRange = new float[]{80, 120};
+        this.dmgRange = new float[]{120, 140};
 
-        this.primaryActionWeights = new float[]{30, 5, 65};
+        this.primaryActionWeights = new float[]{40, 10, 60};
         this.secondaryActionWeights = new float[]{10, 10, 80};
         // defend, dodge, nothing
 
-        this.blockChance = 50;
+        this.blockChance = 80;
         this.dodgeChance = 50;
 
         this.blockMultiplier = 0.2f;
@@ -20,10 +20,10 @@ public class Werewolf extends Creature {
 
         switch (actionInt) {
             case 0: {
-                return pounce(power);
+                return assail(power);
             }
             case 1: {
-                return nibble(power);
+                return howl(power);
             }
             case 2: {
                 return 0;
@@ -33,16 +33,16 @@ public class Werewolf extends Creature {
         return 0;
     }
 
-    private float pounce(float power) {
-        float newPower = power * 0.3f;
-        this.action = this.name + " pounces, dealing " + newPower + "!";
+    private float assail(float power) {
+        float newPower = power * 0.9f;
+        this.action = this.name + " assails, dealing " + newPower + "!";
 
         return newPower;
     }
 
     private float howl(float power) {
-        float newPower = power * 0.3f;
-        this.action = this.name + " howls, healing for " + newPower + "!";
+        float newPower = -power * 0.4f;
+        this.action = this.name + " howls, healing for " + -newPower + "!";
 
         return newPower;
     }

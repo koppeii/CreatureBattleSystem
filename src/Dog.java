@@ -4,16 +4,16 @@ public class Dog extends Creature {
 
         this.health = 700;
 
-        this.dmgRange = new float[]{50, 100};
+        this.dmgRange = new float[]{80, 100};
             // why am i not allowed to initialize an array here? why like this (recommended by the ide), unlike in Creature?
         this.primaryActionWeights = new float[]{35, 55, 10};
-        this.secondaryActionWeights = new float[]{45, 45, 10};
+        this.secondaryActionWeights = new float[]{40, 40, 20};
             // defend, dodge, nothing
 
         this.blockChance = 50;
         this.dodgeChance = 60;
 
-        this.blockMultiplier = 0.6f;
+        this.blockMultiplier = 0.5f;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class Dog extends Creature {
     }
 
     private float bite(float power) {
-        float newPower = power * 0.8f;
+        float newPower = power * 0.7f;
         this.action = this.name + " bites for " + newPower + "!";
 
         return newPower;
