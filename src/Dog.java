@@ -1,20 +1,22 @@
 public class Dog extends Creature {
-    Dog() {
-        // a way to allow subclasses to influence superclass fields
+        public float health = 700;
 
-        this.health = 700;
+        private float[] dmgRange = {80, 100};
 
-        this.dmgRange = new float[]{80, 100};
-            // why am i not allowed to initialize an array here? why like this (recommended by the ide), unlike in Creature?
-        this.primaryActionWeights = new float[]{35, 55, 10};
-        this.secondaryActionWeights = new float[]{40, 40, 20};
-            // defend, dodge, nothing
+        private float[] primaryActionWeights = {35, 55, 10};
+        private float[] secondaryActionWeights = {40, 40, 20};
+    // defend, dodge, nothing
 
-        this.blockChance = 50;
-        this.dodgeChance = 60;
+        private int blockChance = 50;
+        private int dodgeChance = 60;
 
-        this.blockMultiplier = 0.5f;
+        private float blockMultiplier = 0.5f;
+
+    public Dog() {
+        super(health, dmgRange, primaryActionWeights, secondaryActionWeights, blockChance, dodgeChance, blockMultiplier);
+
     }
+
 
     @Override
     public float primaryAction(float power) {

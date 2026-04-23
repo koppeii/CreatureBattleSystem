@@ -2,19 +2,31 @@ public class Creature {
     public String name;
     public String action;
 
-    protected float health = 1000;
+    public float health;
 
-    protected float[] dmgRange = {50, 100};
-    protected float[] primaryActionWeights = {90, 10};
-    protected float[] secondaryActionWeights = {40, 40, 20};
+    private float[] dmgRange;
+    private float[] primaryActionWeights;
+    private float[] secondaryActionWeights;
 
-    protected int blockChance = 50;
-    protected int dodgeChance = 50;
+    private int blockChance;
+    private int dodgeChance;
 
-    protected float blockMultiplier = 0.5f;
+    private float blockMultiplier;
 
     // protected is a way to allow subclasses to influence superclass fields/methods
 
+    public Creature(float health, float[] dmgRange, float[] primaryActionWeights, float[] secondaryActionWeights, int blockChance, int dodgeChance ,float blockMultiplier) {
+        this.health = health;
+
+        this.dmgRange = dmgRange;
+        this.primaryActionWeights = primaryActionWeights;
+        this.secondaryActionWeights = secondaryActionWeights;
+
+        this.blockChance = blockChance;
+        this.dodgeChance = dodgeChance;
+
+        this.blockMultiplier = blockMultiplier;
+    }
 
     // Returns the damage done by the Creature
     public float genAttackPower() {
