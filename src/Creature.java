@@ -28,6 +28,9 @@ public class Creature {
         this.blockMultiplier = blockMultiplier;
     }
 
+    public Creature() {}
+
+
     // Returns the damage done by the Creature
     public float genAttackPower() {
         float power = Rand.randomFloat(dmgRange[0], dmgRange[1]);

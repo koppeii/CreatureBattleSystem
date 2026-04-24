@@ -1,17 +1,19 @@
 public class Rabbit extends Creature{
+//   public float health = 500;
+//
+//   private float[] dmgRange = new float[]{60, 80};
+
+   private float[] primaryActionWeights = new float[]{75, 20, 5};
+//   private float[] secondaryActionWeights = new float[]{10, 90, 5};
+//    // defend, dodge, nothing
+//
+//    private int blockChance = 20;
+//    private int dodgeChance = 80;
+//
+//    private float blockMultiplier = 0.4f;
+
     Rabbit() {
-        this.health = 500;
-
-        this.dmgRange = new float[]{60, 80};
-
-        this.primaryActionWeights = new float[]{75, 20, 5};
-        this.secondaryActionWeights = new float[]{10, 90, 5};
-        // defend, dodge, nothing
-
-        this.blockChance = 20;
-        this.dodgeChance = 80;
-
-        this.blockMultiplier = 0.4f;
+        super(500, new float[]{60, 80}, new float[]{75, 20, 5}, new float[]{10, 90, 5}, 20, 80, 0.4f);
     }
 
     @Override

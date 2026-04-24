@@ -6,6 +6,10 @@ public class Main {
 
         Creature a = Rand.randomCreature();
         Creature b = Rand.randomCreature();
+
+//        Creature a = new Dog();
+//        Creature b = new Dog();
+
         a.name = "Grimm";
         b.name = "Lewis";
 
