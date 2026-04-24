@@ -28,7 +28,6 @@ public class Creature {
         this.blockMultiplier = blockMultiplier;
     }
 
-    public Creature() {}
 
 
     // Returns the damage done by the Creature
@@ -47,7 +46,6 @@ public class Creature {
             case 1: {
                 return 0;
             }
-
         }
 
         return 0;

@@ -18,7 +18,8 @@ public class Dog extends Creature {
 
     // super() constructs first, and then the children construct second, thus its fields are instantiated later than the creature, and referencing
     // fields of a subclass while using super() will not work
-        // putting in literals is claudes decision, although i was trying to find another method before asking
+        // putting in literals was mentioned by claude, although i was trying to find another method before asking
+        // is there another way of doing this, without being redundant?
 
 
     @Override
